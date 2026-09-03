@@ -1751,7 +1751,7 @@
   async function lerArquivoComoTexto(file){
     const buf = await file.arrayBuffer();
     const utf8 = new TextDecoder('utf-8').decode(buf);
-    const corrompidos = (utf8.match(/ /g) || []).length;
+    const corrompidos = (utf8.match(/�/g) || []).length;
     if(corrompidos > 3){
       try{ return new TextDecoder('windows-1252').decode(buf); }catch(e){ return utf8; }
     }
